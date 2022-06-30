@@ -1,12 +1,25 @@
 import './App.css';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import axios from 'axios';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import Schedule from './components/Schedule';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Teachers from './components/Teachers';
+import Subjects from './components/Subjects';
+
+const queryClient = new QueryClient();
 
 function App() {
-  axios.get('https://jsonplaceholder.typicode.com/posts').then((res) => {
-    console.log(res);
-  });
-  return <div className="App">Test</div>;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Router>
+        <div className="App">
+          <Schedule />
+          <Routes>
+            <Route path="/" element={<div></div>} />
+          </Routes>
+        </div>
+      </Router>
+    </QueryClientProvider>
+  );
 }
 
 export default App;
