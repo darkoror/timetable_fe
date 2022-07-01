@@ -38,9 +38,11 @@ const ScheduleItem = ({ item }) => {
       <div>{weekDays[item.week_day]}</div>-<div>{item.lesson_number}</div>-
       <div>{getSubjectNameById(subjects.data, item.subject_id)}</div>-
       <div>
-        {item.teachers
-          .map((teacherId) => getTeacherNameById(teachers.data, teacherId))
-          .join(', ')}
+          <div>
+            {item.teachers
+              .map((teacherId) => getTeacherNameById(teachers.data, teacherId))
+              .join(', ')} {"-"} {item.auditorium} ауд. - {item.academy_building}
+          </div>
       </div>
       -<div>{subgroupTypes[item.subgroup]}</div>-
       <div>{lessonTypes[item.type]}</div>-
