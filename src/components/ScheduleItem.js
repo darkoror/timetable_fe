@@ -31,18 +31,20 @@ const ScheduleItem = ({ item }) => {
   const { data: subjects } = useQuery('subjects', getSubjects);
   const { data: teachers } = useQuery('teachers', getTeachers);
 
+  if (subjects === undefined || teachers === undefined) return <div>...</div>;
+
   return (
-    <div>
-      {subjects === undefined || teachers === undefined
-        ? '...'
-        : `${weekDays[item.week_day]} - ${item.lesson_number} -
-          ${getSubjectNameById(subjects.data, item.subject_id)} -
-          ${item.teachers
-            .map((teacherId) => getTeacherNameById(teachers.data, teacherId))
-            .join(', ')} - 
-            ${subgroupTypes[item.subgroup]} - 
-            ${lessonTypes[item.type]} - 
-            ${frequencyTypes[item.frequency]}`}
+    <div className="lesson-cell">
+      <div>{weekDays[item.week_day]}</div>-<div>{item.lesson_number}</div>-
+      <div>{getSubjectNameById(subjects.data, item.subject_id)}</div>-
+      <div>
+        {item.teachers
+          .map((teacherId) => getTeacherNameById(teachers.data, teacherId))
+          .join(', ')}
+      </div>
+      -<div>{subgroupTypes[item.subgroup]}</div>-
+      <div>{lessonTypes[item.type]}</div>-
+      <div>{frequencyTypes[item.frequency]}</div>
     </div>
   );
 };

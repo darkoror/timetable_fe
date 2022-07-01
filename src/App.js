@@ -12,10 +12,12 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <Router>
         <div className="App">
-          <Schedule />
-          <Routes>
-            <Route path="/" element={<div></div>} />
-          </Routes>
+          <div className="container">
+            <Schedule />
+            <Routes>
+              <Route path="/" element={<div></div>} />
+            </Routes>
+          </div>
         </div>
       </Router>
     </QueryClientProvider>
