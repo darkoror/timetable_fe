@@ -1,12 +1,11 @@
 import React from 'react';
-import { useQuery } from 'react-query';
+import useSubjects from '../hooks/useSubjects';
+import useTeachers from '../hooks/useTeachers';
 import {
   subgroupTypes,
   frequencyTypes,
   lessonTypes,
   weekDays,
-  getSubjects,
-  getTeachers,
 } from '../services/dataService';
 
 const getSubjectNameById = (subjects, id) => {
@@ -28,21 +27,25 @@ const getTeacherNameById = (teachers, id) => {
 };
 
 const ScheduleItem = ({ item }) => {
-  const { data: subjects } = useQuery('subjects', getSubjects);
-  const { data: teachers } = useQuery('teachers', getTeachers);
+  const { data: subjects, status: subjectsStatus } = useSubjects();
+  const { data: teachers, status: teachersStatus } = useTeachers();
 
-  if (subjects === undefined || teachers === undefined) return <div>...</div>;
+  console.log(subjects, teachers);
+
+  if (subjectsStatus === 'loading' || teachersStatus === 'loading')
+    return <div>...</div>;
 
   return (
     <div className="lesson-cell">
       <div>{weekDays[item.week_day]}</div>-<div>{item.lesson_number}</div>-
-      <div>{getSubjectNameById(subjects.data, item.subject_id)}</div>-
+      <div>{getSubjectNameById(subjects, item.subject_id)}</div>-
       <div>
-          <div>
-            {item.teachers
-              .map((teacherId) => getTeacherNameById(teachers.data, teacherId))
-              .join(', ')} {"-"} {item.auditorium} ауд. - {item.academy_building}
-          </div>
+        <div>
+          {item.teachers
+            .map((teacherId) => getTeacherNameById(teachers, teacherId))
+            .join(', ')}{' '}
+          {'-'} {item.auditorium} ауд. - {item.academy_building}
+        </div>
       </div>
       -<div>{subgroupTypes[item.subgroup]}</div>-
       <div>{lessonTypes[item.type]}</div>-

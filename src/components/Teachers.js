@@ -1,15 +1,14 @@
-import { getTeachers } from '../services/dataService';
-import { useQuery } from 'react-query';
+import useTeachers from '../hooks/useTeachers';
 import Teacher from './Teacher';
 
 function Teachers() {
-  const { data, status } = useQuery('teachers', getTeachers);
+  const { data, status } = useTeachers();
 
   return (
     <div>
       {status === 'loading'
         ? 'Loading...'
-        : data.data.map((item) => <Teacher key={item.id} item={item} />)}
+        : data.map((item) => <Teacher key={item.id} item={item} />)}
     </div>
   );
 }

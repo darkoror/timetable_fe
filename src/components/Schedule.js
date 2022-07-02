@@ -1,17 +1,14 @@
-import { getSchedule } from '../services/dataService';
-import { useQuery } from 'react-query';
+import useSchedule from '../hooks/useSchedule';
 import ScheduleItem from './ScheduleItem';
 
 function Schedule() {
-  const { data, status } = useQuery('schedule', getSchedule);
+  const { data, status } = useSchedule();
 
   return (
     <div>
       {status === 'loading'
         ? 'Loading...'
-        : data.data.map((item, index) => (
-            <ScheduleItem key={index} item={item} />
-          ))}
+        : data.map((item, index) => <ScheduleItem key={index} item={item} />)}
     </div>
   );
 }
