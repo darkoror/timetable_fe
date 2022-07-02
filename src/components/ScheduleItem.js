@@ -30,14 +30,12 @@ const ScheduleItem = ({ item }) => {
   const { data: subjects, status: subjectsStatus } = useSubjects();
   const { data: teachers, status: teachersStatus } = useTeachers();
 
-  console.log(subjects, teachers);
-
   if (subjectsStatus === 'loading' || teachersStatus === 'loading')
     return <div>...</div>;
 
   return (
     <div className="lesson-cell">
-      <div>{weekDays[item.week_day]}</div>-<div>{item.lesson_number}</div>-
+      <div>{item.lesson_number}</div>-
       <div>{getSubjectNameById(subjects, item.subject_id)}</div>-
       <div>
         <div>

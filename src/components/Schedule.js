@@ -1,14 +1,21 @@
 import useSchedule from '../hooks/useSchedule';
-import ScheduleItem from './ScheduleItem';
+import ScheduleDay from './ScheduleDay';
+import groupBy from '../utils/groupBy';
 
 function Schedule() {
   const { data, status } = useSchedule();
+
+  let groupedData = {};
+
+  if (status === 'success') groupedData = groupBy(data, 'week_day');
 
   return (
     <div>
       {status === 'loading'
         ? 'Loading...'
-        : data.map((item, index) => <ScheduleItem key={index} item={item} />)}
+        : Object.keys(groupedData).map((item) => (
+            <ScheduleDay key={item} data={groupedData[item]} weekDay={item} />
+          ))}
     </div>
   );
 }
