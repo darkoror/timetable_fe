@@ -50,16 +50,16 @@ const ScheduleItem = ({ data, lessonNumber }) => {
                 : 'denominator'
             }`}
           >
-            <div>{getSubjectNameById(subjects, item.subject_id)}</div> -
+            <div>{getSubjectNameById(subjects, item.subject_id)}</div>
             <div>
               <div>
                 {item.teachers
                   .map((teacherId) => getTeacherNameById(teachers, teacherId))
                   .join(', ')}{' '}
-                {'-'} {item.auditorium} ауд. - {item.academy_building}
+                {item.auditorium} ауд. {item.academy_building}
               </div>
             </div>
-            - <div>{lessonTypes[item.type]}</div>
+            <div>{lessonTypes[item.type]}</div>
           </div>
         ))}
       </div>
