@@ -26,28 +26,33 @@ const getTeacherNameById = (teachers, id) => {
   return result.short_name;
 };
 
-const ScheduleItem = ({ item }) => {
+const ScheduleItem = ({ data, lessonNumber }) => {
   const { data: subjects, status: subjectsStatus } = useSubjects();
   const { data: teachers, status: teachersStatus } = useTeachers();
 
   if (subjectsStatus === 'loading' || teachersStatus === 'loading')
     return <div>...</div>;
 
+  data.sort((a, b) => a.subgroup - b.subgroup);
   return (
-    <div className="lesson-cell">
-      <div>{item.lesson_number}</div>-
-      <div>{getSubjectNameById(subjects, item.subject_id)}</div>-
-      <div>
-        <div>
-          {item.teachers
-            .map((teacherId) => getTeacherNameById(teachers, teacherId))
-            .join(', ')}{' '}
-          {'-'} {item.auditorium} ауд. - {item.academy_building}
+    <div className="flex-row">
+      <div className="day-label">{lessonNumber}</div>
+      {data.map((item, index) => (
+        <div key={index} className={'lesson-cell'}>
+          <div>{getSubjectNameById(subjects, item.subject_id)}</div> -
+          <div>
+            <div>
+              {item.teachers
+                .map((teacherId) => getTeacherNameById(teachers, teacherId))
+                .join(', ')}{' '}
+              {'-'} {item.auditorium} ауд. - {item.academy_building}
+            </div>
+          </div>
+          -<div>{subgroupTypes[item.subgroup]}</div> -
+          <div>{lessonTypes[item.type]}</div> -
+          <div>{frequencyTypes[item.frequency]}</div>
         </div>
-      </div>
-      -<div>{subgroupTypes[item.subgroup]}</div>-
-      <div>{lessonTypes[item.type]}</div>-
-      <div>{frequencyTypes[item.frequency]}</div>
+      ))}
     </div>
   );
 };

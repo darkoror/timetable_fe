@@ -10,6 +10,7 @@
 }
 
 .lesson-cell {
+  width: 100%;
   margin: 0.1rem;
   padding: 0.5rem 3rem;
   border: 1px solid black;
@@ -25,4 +26,9 @@
   font-weight: 700;
   font-size: 1.5rem;
   padding-right: 0.8rem;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
 }
