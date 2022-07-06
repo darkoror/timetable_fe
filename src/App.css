@@ -11,10 +11,48 @@
 
 .lesson-cell {
   width: 100%;
-  margin: 0.1rem;
-  padding: 0.5rem 3rem;
-  border: 1px solid black;
-  background-color: #668845;
+  margin: 0.4rem auto;
+  background-color: white;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0.4rem;
+  grid-row-gap: 0.4rem;
+  border: #777 solid 1px;
+  box-shadow: #777 0 4px 2px -2px;
+}
+
+.lesson-cell .box {
+  padding: 0.4rem;
+  background-color: #447744;
+  color: #fff;
+}
+
+.whole-group {
+  margin: 0.4rem;
+  grid-column: 1 / 3;
+}
+
+.subgroup-1 {
+  margin: 0.4rem 0 0.4rem 0.4rem;
+}
+
+.subgroup-2 {
+  margin: 0.4rem 0.4rem 0.4rem 0;
+  grid-column-start: 2;
+}
+
+.weekly {
+  grid-row: 1 / 3;
+}
+
+.numerator {
+  margin: 0.4rem 0.4rem 0 0.4rem;
+}
+
+.denominator {
+  margin: 0 0.4rem 0.4rem 0.4rem;
+  grid-row-start: 2;
 }
 
 .schedule-day {

@@ -1,12 +1,7 @@
 import React from 'react';
 import useSubjects from '../hooks/useSubjects';
 import useTeachers from '../hooks/useTeachers';
-import {
-  subgroupTypes,
-  frequencyTypes,
-  lessonTypes,
-  weekDays,
-} from '../services/dataService';
+import { lessonTypes } from '../services/dataService';
 
 const getSubjectNameById = (subjects, id) => {
   const result = subjects.find((subject) => {
@@ -37,22 +32,37 @@ const ScheduleItem = ({ data, lessonNumber }) => {
   return (
     <div className="flex-row">
       <div className="day-label">{lessonNumber}</div>
-      {data.map((item, index) => (
-        <div key={index} className={'lesson-cell'}>
-          <div>{getSubjectNameById(subjects, item.subject_id)}</div> -
-          <div>
+      <div className={'lesson-cell'}>
+        {data.map((item, index) => (
+          <div
+            key={index}
+            className={`box ${
+              item.subgroup === 0
+                ? 'whole-group'
+                : item.subgroup === 1
+                ? 'subgroup-1'
+                : 'subgroup-2'
+            } ${
+              item.frequency === 0
+                ? 'weekly'
+                : item.frequency === 1
+                ? 'numerator'
+                : 'denominator'
+            }`}
+          >
+            <div>{getSubjectNameById(subjects, item.subject_id)}</div> -
             <div>
-              {item.teachers
-                .map((teacherId) => getTeacherNameById(teachers, teacherId))
-                .join(', ')}{' '}
-              {'-'} {item.auditorium} ауд. - {item.academy_building}
+              <div>
+                {item.teachers
+                  .map((teacherId) => getTeacherNameById(teachers, teacherId))
+                  .join(', ')}{' '}
+                {'-'} {item.auditorium} ауд. - {item.academy_building}
+              </div>
             </div>
+            - <div>{lessonTypes[item.type]}</div>
           </div>
-          -<div>{subgroupTypes[item.subgroup]}</div> -
-          <div>{lessonTypes[item.type]}</div> -
-          <div>{frequencyTypes[item.frequency]}</div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };

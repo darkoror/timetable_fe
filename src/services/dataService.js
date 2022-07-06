@@ -3,15 +3,15 @@ import axios from 'axios';
 export const baseUrl = 'http://time-table.pp.ua/api';
 
 export const getSchedule = async () => {
-  return axios.get(`${baseUrl}/group/1/schedule/`).then((res) => res.data);
+  return axios.get(`${baseUrl}/groups/1/lessons/`).then((res) => res.data);
 };
 
 export const getTeachers = async () => {
-  return axios.get(`${baseUrl}/group/1/teachers/`).then((res) => res.data);
+  return axios.get(`${baseUrl}/groups/1/teachers/`).then((res) => res.data);
 };
 
 export const getSubjects = async () => {
-  return axios.get(`${baseUrl}/group/1/subjects/`).then((res) => res.data);
+  return axios.get(`${baseUrl}/groups/1/subjects/`).then((res) => res.data);
 };
 
 export const weekDays = {
