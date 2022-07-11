@@ -1,8 +1,10 @@
+import { useParams } from 'react-router-dom';
 import useTeachers from '../hooks/useTeachers';
 import Teacher from './Teacher';
 
 function Teachers() {
-  const { data, status } = useTeachers();
+  const urlParams = useParams();
+  const { data, status } = useTeachers(urlParams.groupId);
 
   return (
     <div>

@@ -1,8 +1,10 @@
+import { useParams } from 'react-router-dom';
 import useGroups from '../hooks/useGroups';
 import Group from './Group';
 
 function Groups() {
-  const { data, status } = useGroups();
+  const urlParams = useParams();
+  const { data, status } = useGroups(urlParams.departmentId);
 
   return (
     <div>

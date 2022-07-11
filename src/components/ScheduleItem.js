@@ -1,4 +1,5 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import useSubjects from '../hooks/useSubjects';
 import useTeachers from '../hooks/useTeachers';
 import { lessonTypes } from '../services/dataService';
@@ -22,8 +23,14 @@ const getTeacherNameById = (teachers, id) => {
 };
 
 const ScheduleItem = ({ data, lessonNumber }) => {
-  const { data: subjects, status: subjectsStatus } = useSubjects();
-  const { data: teachers, status: teachersStatus } = useTeachers();
+  const urlParams = useParams();
+
+  const { data: subjects, status: subjectsStatus } = useSubjects(
+    urlParams.groupId
+  );
+  const { data: teachers, status: teachersStatus } = useTeachers(
+    urlParams.groupId
+  );
 
   if (subjectsStatus === 'loading' || teachersStatus === 'loading')
     return <div>...</div>;

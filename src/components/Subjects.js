@@ -1,8 +1,10 @@
+import { useParams } from 'react-router-dom';
 import useSubjects from '../hooks/useSubjects';
 import Subject from './Subject';
 
 function Subjects() {
-  const { data, status } = useSubjects();
+  const urlParams = useParams();
+  const { data, status } = useSubjects(urlParams.groupId);
 
   return (
     <div>

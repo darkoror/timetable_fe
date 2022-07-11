@@ -2,30 +2,38 @@ import axios from 'axios';
 
 export const baseUrl = 'http://time-table.pp.ua/api';
 
-export const getSchedule = async () => {
-  return axios.get(`${baseUrl}/groups/1/lessons/`).then((res) => res.data);
+export const getSchedule = async (groupId) => {
+  return axios
+    .get(`${baseUrl}/groups/${groupId}/lessons/`)
+    .then((res) => res.data);
 };
 
-export const getTeachers = async () => {
-  return axios.get(`${baseUrl}/groups/1/teachers/`).then((res) => res.data);
+export const getTeachers = async (groupId) => {
+  return axios
+    .get(`${baseUrl}/groups/${groupId}/teachers/`)
+    .then((res) => res.data);
 };
 
-export const getSubjects = async () => {
-  return axios.get(`${baseUrl}/groups/1/subjects/`).then((res) => res.data);
+export const getSubjects = async (groupId) => {
+  return axios
+    .get(`${baseUrl}/groups/${groupId}/subjects/`)
+    .then((res) => res.data);
 };
 
 export const getUniversities = async () => {
   return axios.get(`${baseUrl}/universities/`).then((res) => res.data);
 };
 
-export const getDepartments = async () => {
+export const getDepartments = async (universityId) => {
   return axios
-    .get(`${baseUrl}/universities/1/departments/`)
+    .get(`${baseUrl}/universities/${universityId}/departments/`)
     .then((res) => res.data);
 };
 
-export const getGroups = async () => {
-  return axios.get(`${baseUrl}/departments/1/groups/`).then((res) => res.data);
+export const getGroups = async (departmentId) => {
+  return axios
+    .get(`${baseUrl}/departments/${departmentId}/groups/`)
+    .then((res) => res.data);
 };
 
 export const weekDays = {

@@ -1,9 +1,11 @@
 import useSchedule from '../hooks/useSchedule';
 import ScheduleDay from './ScheduleDay';
 import groupBy from '../utils/groupBy';
+import { useParams } from 'react-router-dom';
 
 function Schedule() {
-  const { data, status } = useSchedule();
+  const urlParams = useParams();
+  const { data, status } = useSchedule(urlParams.groupId);
 
   let groupedData = {};
 

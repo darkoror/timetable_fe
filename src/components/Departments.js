@@ -1,9 +1,11 @@
-import useDepartment from '../hooks/useDepartments';
+import useDepartments from '../hooks/useDepartments';
 import Department from './Department';
 
-function Departments() {
-  const { data, status } = useDepartment();
+import { useParams } from 'react-router-dom';
 
+function Departments() {
+  const urlParams = useParams();
+  const { data, status } = useDepartments(urlParams.universityId);
   return (
     <div>
       {status === 'loading'
