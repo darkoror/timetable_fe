@@ -14,6 +14,20 @@ export const getSubjects = async () => {
   return axios.get(`${baseUrl}/groups/1/subjects/`).then((res) => res.data);
 };
 
+export const getUniversities = async () => {
+  return axios.get(`${baseUrl}/universities/`).then((res) => res.data);
+};
+
+export const getDepartments = async () => {
+  return axios
+    .get(`${baseUrl}/universities/1/departments/`)
+    .then((res) => res.data);
+};
+
+export const getGroups = async () => {
+  return axios.get(`${baseUrl}/departments/1/groups/`).then((res) => res.data);
+};
+
 export const weekDays = {
   1: 'Monday',
   2: 'Tuesday',
