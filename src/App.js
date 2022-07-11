@@ -28,21 +28,12 @@ function App() {
                 element={<Departments />}
               />
               <Route
-                path="/universities/:universityId/departments/:departmentId/groups"
+                path="/departments/:departmentId/groups"
                 element={<Groups />}
               />
-              <Route
-                path="/universities/:universityId/departments/:departmentId/groups/:groupId/teachers"
-                element={<Teachers />}
-              />
-              <Route
-                path="/universities/:universityId/departments/:departmentId/groups/:groupId/subjects"
-                element={<Subjects />}
-              />
-              <Route
-                path="/universities/:universityId/departments/:departmentId/groups/:groupId/schedule"
-                element={<Schedule />}
-              />
+              <Route path="/groups/:groupId/teachers" element={<Teachers />} />
+              <Route path="/groups/:groupId/subjects" element={<Subjects />} />
+              <Route path="/groups/:groupId/schedule" element={<Schedule />} />
               <Route
                 path="*"
                 element={<Navigate to="/universities" replace />}

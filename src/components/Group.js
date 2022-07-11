@@ -5,7 +5,7 @@ const Group = ({ item }) => {
   const location = useLocation();
   return (
     <div>
-      <Link to={`${location.pathname}/${item.id}/schedule`}>{item.name}</Link>
+      <Link to={`/groups/${item.id}/schedule`}>{item.name}</Link>
     </div>
   );
 };

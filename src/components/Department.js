@@ -5,7 +5,7 @@ const Department = ({ item }) => {
   const location = useLocation();
   return (
     <div>
-      <Link to={`${location.pathname}/${item.id}/groups`}>{item.name}</Link>
+      <Link to={`/departments/${item.id}/groups`}>{item.name}</Link>
     </div>
   );
 };
