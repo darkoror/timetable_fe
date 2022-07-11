@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const baseUrl = 'http://time-table.pp.ua/api';
+export const baseUrl = 'http://api.time-table.pp.ua/api';
 
 export const getSchedule = async (groupId) => {
   return axios
