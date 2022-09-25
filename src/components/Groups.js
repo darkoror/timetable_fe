@@ -10,6 +10,8 @@ function Groups() {
     <div className="entity-selection">
       {status === 'loading'
         ? 'Loading...'
+        : data.length === 0
+        ? 'No available groups'
         : data.map((item) => <Group key={item.id} item={item} />)}
     </div>
   );

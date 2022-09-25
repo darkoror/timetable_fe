@@ -10,6 +10,8 @@ function Departments() {
     <div className="entity-selection">
       {status === 'loading'
         ? 'Loading...'
+        : data.length === 0
+        ? 'No available departments'
         : data.map((item) => <Department key={item.id} item={item} />)}
     </div>
   );
