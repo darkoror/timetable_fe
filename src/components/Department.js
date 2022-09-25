@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 const Department = ({ item }) => {
   return (
-    <div>
-      <Link to={`/departments/${item.id}/groups`}>{item.name}</Link>
-    </div>
+    <Link className="item-box" to={`/departments/${item.id}/groups`}>
+      <span>{item.name}</span>
+    </Link>
   );
 };
 

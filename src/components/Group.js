@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 const Group = ({ item }) => {
   return (
-    <div>
-      <Link to={`/groups/${item.id}/schedule`}>{item.name}</Link>
-    </div>
+    <Link className="item-box" to={`/groups/${item.id}/schedule`}>
+      <span>{item.name}</span>
+    </Link>
   );
 };
 

@@ -7,7 +7,7 @@ function Departments() {
   const urlParams = useParams();
   const { data, status } = useDepartments(urlParams.universityId);
   return (
-    <div>
+    <div className="entity-selection">
       {status === 'loading'
         ? 'Loading...'
         : data.map((item) => <Department key={item.id} item={item} />)}

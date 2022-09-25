@@ -5,7 +5,7 @@ function Universities() {
   const { data, status } = useUniversities();
 
   return (
-    <div>
+    <div className="entity-selection">
       {status === 'loading'
         ? 'Loading...'
         : data.map((item) => <University key={item.id} item={item} />)}

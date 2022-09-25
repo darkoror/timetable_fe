@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
 .container {
   display: flex;
   margin: 0 7rem;
@@ -74,4 +79,19 @@
 
 .flex-row {
   display: flex;
+}
+
+.item-box {
+  display: block;
+  border: 1px black solid;
+  border-radius: 15px;
+  padding: 2rem;
+  margin: 1rem;
+  width: 19rem;
+}
+
+.entity-selection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* center */
 }

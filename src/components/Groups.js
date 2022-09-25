@@ -7,7 +7,7 @@ function Groups() {
   const { data, status } = useGroups(urlParams.departmentId);
 
   return (
-    <div>
+    <div className="entity-selection">
       {status === 'loading'
         ? 'Loading...'
         : data.map((item) => <Group key={item.id} item={item} />)}
