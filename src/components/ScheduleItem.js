@@ -57,7 +57,7 @@ const ScheduleItem = ({ data, lessonNumber }) => {
                 : 'denominator'
             }`}
           >
-            <div>{getSubjectNameById(subjects, item.subject_id)}</div>
+            <div className={'font-weight-600'}>{getSubjectNameById(subjects, item.subject_id)}</div>
             <div>
               <div>
                 {item.teachers
