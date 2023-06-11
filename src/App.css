@@ -71,10 +71,10 @@ a {
 }
 
 .day-label {
-  display: inline-block;
   font-weight: 700;
   font-size: 1.5rem;
   padding-right: 0.8rem;
+  margin: 0.2rem;
 }
 
 .flex-row {
@@ -94,4 +94,10 @@ a {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between; /* center */
+}
+
+@media screen and (max-width: 450px) {
+  .schedule-day {
+    flex-direction: column;
+  }
 }

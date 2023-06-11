@@ -12,7 +12,7 @@ function Schedule() {
   if (status === 'success') groupedData = groupBy(data, 'week_day');
 
   return (
-    <div>
+    <div className='grid grid-cols-5 gap-4'>
       {status === 'loading'
         ? 'Loading...'
         : Object.keys(groupedData).map((item) => (
