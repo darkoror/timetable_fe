@@ -15,8 +15,7 @@ a {
 }
 
 .lesson-cell {
-  max-width: 60rem;
-  width: 100%;
+  width: 20rem;
   margin: 0.4rem;
   background-color: white;
   display: grid;
@@ -32,10 +31,12 @@ a {
   padding: 0.4rem;
   background-color: #447744;
   color: #fff;
-  min-height: 10rem;
+  min-height: 6.5rem;
+  max-height: 12rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  font-size: 0.8rem;
 }
 
 .whole-group {
@@ -94,4 +95,8 @@ a {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between; /* center */
+}
+
+.font-weight-600 {
+  font-weight: 600;
 }
