@@ -1,8 +1,8 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
-import useSubjects from '../hooks/useSubjects';
-import useTeachers from '../hooks/useTeachers';
-import { lessonTypes } from '../services/dataService';
+import React from "react";
+import { useParams } from "react-router-dom";
+import useSubjects from "../hooks/useSubjects";
+import useTeachers from "../hooks/useTeachers";
+import { lessonTypes } from "../services/dataService";
 
 const getSubjectNameById = (subjects, id) => {
   const result = subjects.find((subject) => {
@@ -32,37 +32,40 @@ const ScheduleItem = ({ data, lessonNumber }) => {
     urlParams.groupId
   );
 
-  if (subjectsStatus === 'loading' || teachersStatus === 'loading')
+  if (subjectsStatus === "loading" || teachersStatus === "loading")
     return <div>...</div>;
 
   data.sort((a, b) => a.subgroup - b.subgroup);
   return (
     <div className="flex-row">
-      <div className="day-label">{lessonNumber}</div>
-      <div className={'lesson-cell'}>
+      {/* <div className="day-label">{lessonNumber}</div> */}
+      <div className={"lesson-cell"}>
         {data.map((item, index) => (
           <div
             key={index}
             className={`box ${
               item.subgroup === 0
-                ? 'whole-group'
+                ? "whole-group"
                 : item.subgroup === 1
-                ? 'subgroup-1'
-                : 'subgroup-2'
+                ? "subgroup-1"
+                : "subgroup-2"
             } ${
               item.frequency === 0
-                ? 'weekly'
+                ? "weekly"
                 : item.frequency === 1
-                ? 'numerator'
-                : 'denominator'
+                ? "numerator"
+                : "denominator"
             }`}
           >
-            <div className={'font-weight-600'}>{getSubjectNameById(subjects, item.subject_id)}</div>
+            <div>{lessonNumber}</div>
+            <div className={"font-weight-600"}>
+              {getSubjectNameById(subjects, item.subject_id)}
+            </div>
             <div>
               <div>
                 {item.teachers
                   .map((teacherId) => getTeacherNameById(teachers, teacherId))
-                  .join(', ')}{' '}
+                  .join(", ")}{" "}
                 {item.auditorium} ауд. {item.academy_building}
               </div>
             </div>
